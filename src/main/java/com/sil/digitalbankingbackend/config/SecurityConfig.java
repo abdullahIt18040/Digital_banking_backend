@@ -75,7 +75,9 @@ public class SecurityConfig {
                 .authorizeHttpRequests(auth -> auth
                         .requestMatchers(
                                 "/api/v1/auth/signup",
-                                "/api/v1/auth/signin"
+                                "/api/v1/auth/signin",
+                                "/api/v2/excle/savebanktansaction"
+
 
                         ).permitAll()
                         .anyRequest().authenticated()
