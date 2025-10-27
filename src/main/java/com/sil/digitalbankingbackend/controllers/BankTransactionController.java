@@ -15,7 +15,7 @@ import java.util.List;
 @RequestMapping("/api/v2")
 @RequiredArgsConstructor
 public class  BankTransactionController {
-
+    long start = System.currentTimeMillis();
     private  final  BankTransactionService service;
 
 
@@ -24,6 +24,10 @@ public class  BankTransactionController {
     public ResponseEntity<String> saveTransactions(@RequestBody List<BankTransaction> transactions) {
         int chunkSize = 1000;
         service.saveAllMultiThreaded(transactions, chunkSize);
+        long end = System.currentTimeMillis();
+        long elapsed = end - start; // time in milliseconds
+
+        System.out.println("Total insertion time: 123333333333333333333333333   is : " + elapsed + " ms");
         return ResponseEntity.ok("Transactions saved successfully using multi-threading!");
     }
 }
