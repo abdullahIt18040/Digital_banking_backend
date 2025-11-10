@@ -3,6 +3,8 @@ package com.sil.digitalbankingbackend.entities;
 import jakarta.persistence.*;
 import lombok.*;
 
+import java.util.List;
+
 @Entity
 @Table(name = "users")
 @Data
@@ -22,8 +24,11 @@ public class User {
     private String email;
 
     private String password;
-    @Builder.Default
+
 
     private String role = "USER";
+    @OneToMany(mappedBy = "user")
+    private List<Enrollment> enrollments;
+
 }
 
