@@ -14,7 +14,7 @@ import java.time.LocalDate;
 @NoArgsConstructor
 @Data
 public class BankTransaction {
-
+//abdullah
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
