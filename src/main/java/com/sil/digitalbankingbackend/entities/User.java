@@ -6,7 +6,9 @@ import lombok.*;
 import java.util.List;
 
 @Entity
-@Table(name = "users")
+@Table(name = "users", indexes = {
+        @Index(columnList = "email", name = "idx_user_email")
+})
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
@@ -18,6 +20,14 @@ public class User {
     private Long id;
 
     private String firstName;
+
+    public User(String lastName, String email, String password, String firstName) {
+        this.lastName = lastName;
+        this.email = email;
+        this.password = password;
+        this.firstName = firstName;
+    }
+
     private String lastName;
 
     @Column(unique = true, nullable = false)
@@ -27,7 +37,7 @@ public class User {
 
 
     private String role = "USER";
-    @OneToMany(mappedBy = "user")
+    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private List<Enrollment> enrollments;
 
 }

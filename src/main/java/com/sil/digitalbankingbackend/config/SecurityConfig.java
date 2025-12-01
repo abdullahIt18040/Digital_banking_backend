@@ -50,7 +50,7 @@ public class SecurityConfig {
             @Override
             public void addCorsMappings(CorsRegistry registry) {
                 registry.addMapping("/**")
-                        .allowedOrigins("http://localhost:9050")  // ✅ matches FRONTEND
+                        .allowedOrigins("http://localhost:9050")
                         .allowedMethods("GET", "POST", "PUT", "DELETE", "OPTIONS")
                         .allowedHeaders("*")
                         .allowCredentials(true);
@@ -76,7 +76,9 @@ public class SecurityConfig {
                         .requestMatchers(
                                 "/api/v1/auth/signup",
                                 "/api/v1/auth/signin",
-                                "/api/v2/excle/savebanktansaction"
+                                "/api/v2/excle/savebanktansaction",
+                                "/api/enrollments/*",
+                                "/api/v2/user/*"
 
 
                         ).permitAll()
